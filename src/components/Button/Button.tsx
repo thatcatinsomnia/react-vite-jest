@@ -6,14 +6,15 @@ type Props = {
   disabled?: boolean;
 };
 
-export default function Button({ children, onClick, disabled = true }: Props) {
+export default function Button({ children, onClick, disabled }: Props) {
   return (
     <button 
       className={`
         mt-auto py-2 w-full bg-gray-700 hover:bg-slate-800 transition-colors text-gray-50 rounded 
         ${disabled ? 'opacity-20 pointer-events-none' : ''}
-      `}
+      `.trim()}
       onClick={onClick}
+      disabled={disabled} 
     >
       {children}
     </button>
