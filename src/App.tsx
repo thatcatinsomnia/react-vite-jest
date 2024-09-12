@@ -1,6 +1,8 @@
+import { CartProvider, useCart } from './contexts/CartContext';
 import Header from './components/Header';
 import Wrapper from './components/Wrapper';
 import Product from './components/Product';
+import ShoppingCart from './components/ShoppingCart';
 
 const products = [
   {
@@ -41,19 +43,23 @@ const products = [
   }
 ];
 
-function App() {
-  const onAddToShoppingCart = () => {
-    console.log('add to shopping cart');
-  };
+export type Product = typeof products[number];
 
+function App() {
   return (
-    <div className="p-4">
-      <Header>Shopping Cart</Header>
-      <Wrapper className="flex flex-wrap gap-x-5 gap-y-10 justify-center">
-        {products.map(p => <Product key={p.id} product={p} onAddToShoppingCart={onAddToShoppingCart} />)}
-      </Wrapper>
-    </div>
+    <CartProvider>
+      <div className="p-4">
+        <Header>Shopping Cart</Header>
+
+        <Wrapper className="flex flex-wrap gap-x-5 gap-y-10 justify-center">
+          {products.map(p => <Product key={p.id} product={p} />)}
+        </Wrapper>
+        
+        <ShoppingCart />
+      </div>
+    </CartProvider>
   )
 }
 
 export default App
+
