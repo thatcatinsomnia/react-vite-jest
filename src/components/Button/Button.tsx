@@ -14,7 +14,6 @@ export default function Button({ children, onClick, disabled }: Props) {
         ${disabled ? 'opacity-20 pointer-events-none' : ''}
       `.trim()}
       onClick={onClick}
-      disabled={disabled} 
     >
       {children}
     </button>
